@@ -30,11 +30,28 @@ class PicturesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @picture = Picture.find_by(id: params[:id])
+
+    if @picture.destroy
+      flash[:success] = "Picture を削除しました！"
+      redirect_to pictures_index_path
+    else
+      flash[:danger] = "Picture の削除に失敗しました"
+      redirect_to pictures_index_path
+    end
+  end
 
   protected
 
   def pictures_params
-    # picture_cache も必要？
+    # image_cache は投稿失敗後もファイルを保持するためのもの
     params.require(:picture).permit(:image, :description, :image_cache)
   end
 end
