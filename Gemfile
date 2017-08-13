@@ -44,4 +44,5 @@ group :development, :test do
 
   gem "carrierwave"
   gem "mini_magick"
+  gem 'twitter-bootstrap-rails'
 end
