@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pictures/index'
+
   root "pictures#index"
 
   resources :pictures, only: [:index, :new, :create, :edit, :update, :destroy]
