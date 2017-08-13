@@ -9,13 +9,7 @@ class PicturesController < ApplicationController
 
   def new
     @picture = Picture.new
-
-    # エラーメッセージがある場合は
-    # その内容を渡す
-    unless $errors.empty?
-      @errors = $errors
-      $errors = []
-    end
+    set_errors
   end
 
   def create
@@ -31,9 +25,19 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    @picture = Picture.find_by(id: params[:id])
+    set_errors
   end
 
   def update
+    @picture = Picture.find_by(id: params[:id])
+    if @picture.update(pictures_params)
+      flash[:success] = "Picture を編集しました！"
+      redirect_to pictures_index_path
+    else
+      flash[:danger] = "Picture の編集に失敗しました"
+      redirect_to edit_picture_path
+    end
   end
 
   def destroy
@@ -48,10 +52,20 @@ class PicturesController < ApplicationController
     end
   end
 
+
+
   protected
 
   def pictures_params
     # image_cache は投稿失敗後もファイルを保持するためのもの
     params.require(:picture).permit(:image, :description, :image_cache)
+  end
+
+  # エラーメッセージがあれば格納する
+  def set_errors
+    unless $errors.empty?
+      @errors = $errors
+      $errors = []
+    end
   end
 end

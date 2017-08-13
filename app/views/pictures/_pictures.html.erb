@@ -2,8 +2,8 @@
 
   <div class="row picture">
     <div class="col col-sm-8 col-xs-offset-1 col-xs-10">
-      <%= profile_img(picture) %>
-      <p><%= picture.description %></p>
+      <%= profile_img(picture) if profile_img(picture) %>
+      <%= simple_format(picture.description) %>
 
       <!-- 対象のパスへ移動する際に id を指定すると
       これだけで移動できる -->
