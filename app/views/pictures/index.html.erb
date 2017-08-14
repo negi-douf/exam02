@@ -1,11 +1,13 @@
 <div class="container">
-  <h1>Pictures</h1>
+  <div class="col-sm-8 col-sm-offset-2 col-xs-offset-1 col-xs-10">
+    <h1>Pictures</h1>
 
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
 
-  <button type="button" class="btn btn-default", id="new_button"><%= link_to "Picture 投稿", new_picture_path%></button>
+    <button type="button" class="btn btn-default", id="new_button"><%= link_to "Picture 投稿", new_picture_path%></button>
 
-  <%= render "pictures" %>
+    <%= render "pictures" %>
+  </div>
 </div>
