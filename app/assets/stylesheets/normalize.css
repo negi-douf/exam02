@@ -6,3 +6,8 @@ img{
   padding-top: 60px;
   padding-bottom: 40px;
 }
+
+.save_picture {
+  display: block;
+  margin-left: auto;
+}
