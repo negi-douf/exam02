@@ -25,3 +25,9 @@ module Exam02
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+module ChatSpace
+  class Application < Rails::Application
+    config.i18n.default_locale = :ja
+  end
+end
