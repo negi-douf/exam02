@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  before_action :set_picture, only: [:edit, :update, :destroy]
+  before_action :set_errors, only: [:new, :edit]
 
   # エラーメッセージを格納するグローバル変数
   $errors = []
@@ -9,7 +11,6 @@ class PicturesController < ApplicationController
 
   def new
     @picture = Picture.new
-    set_errors
   end
 
   def create
@@ -19,30 +20,27 @@ class PicturesController < ApplicationController
       redirect_to pictures_index_path
     else
       flash[:danger] = "Picture の投稿に失敗しました"
-      $errors = @picture.errors
-      redirect_to pictures_index_path
+      $errors = @picture.errors.full_messages
+      set_errors
+      render new_picture_path
     end
   end
 
   def edit
-    @picture = Picture.find_by(id: params[:id])
-    set_errors
   end
 
   def update
-    @picture = Picture.find_by(id: params[:id])
     if @picture.update(pictures_params)
       flash[:success] = "Picture を編集しました！"
       redirect_to pictures_index_path
     else
       flash[:danger] = "Picture の編集に失敗しました"
-      redirect_to edit_picture_path
+      $errors = @picture.errors.full_messages
+      redirect_to edit_picture_path(@picture.id)
     end
   end
 
   def destroy
-    @picture = Picture.find_by(id: params[:id])
-
     if @picture.destroy
       flash[:success] = "Picture を削除しました！"
       redirect_to pictures_index_path
@@ -67,5 +65,10 @@ class PicturesController < ApplicationController
       @errors = $errors
       $errors = []
     end
+  end
+
+  # id から picture を特定する
+  def set_picture
+    @picture = Picture.find_by(id: params[:id])
   end
 end
