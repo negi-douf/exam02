@@ -16,6 +16,16 @@ img{
   margin-left: auto;
 }
 
-.row {
+.navbar-default .container-fluid .navbar-header > a {
+  color: black;
+}
 
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
 }
