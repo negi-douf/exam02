@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def profile_img(picture)
+  def show_img(picture)
     return image_tag(picture.image) if picture.image?
 
     unless picture.image.blank?

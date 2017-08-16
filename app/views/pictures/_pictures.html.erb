@@ -1,7 +1,7 @@
 <% @pictures.each do |picture| %>
 
   <div class="row picture">
-    <%= profile_img(picture) if profile_img(picture) %>
+    <%= show_img(picture) if show_img(picture) %>
     <%= simple_format(picture.description) %>
 
     <!-- 対象のパスへ移動する際に id を指定すると

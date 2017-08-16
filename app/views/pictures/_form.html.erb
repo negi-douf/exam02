@@ -17,7 +17,7 @@
 
 <%= form_for(@picture, url: choose_new_or_edit) do |f| %>
 
-  <%= profile_img(@picture) %>
+  <%= show_img(@picture) %>
 
   <%= f.file_field :image %>
   <br>
