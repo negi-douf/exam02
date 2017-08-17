@@ -1,6 +1,9 @@
 <% @pictures.each do |picture| %>
 
   <div class="row picture">
+    <br />
+    <p><%= current_user.name%>さんが投稿しました</p>
+
     <%= show_img(picture) if show_img(picture) %>
     <%= simple_format(picture.description) %>
 
