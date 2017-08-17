@@ -20,6 +20,7 @@ class PicturesController < ApplicationController
     if @picture.save
       flash[:success] = "Picture を投稿しました！"
       redirect_to pictures_index_path
+      NoticeMailer.sendmail_picture(@picture).deliver
     else
       flash[:danger] = "Picture の投稿に失敗しました"
       $errors = @picture.errors.full_messages
