@@ -4,7 +4,7 @@
     <br />
     <p><%= current_user.name%>さんが投稿しました</p>
 
-    <%= show_img(picture) if show_img(picture) %>
+    <%= show_image(picture) if show_image(picture) %>
     <%= simple_format(picture.description) %>
 
     <!-- 対象のパスへ移動する際に id を指定すると
