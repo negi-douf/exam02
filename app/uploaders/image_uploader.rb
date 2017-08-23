@@ -13,6 +13,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       img
     end
   end
+  
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
